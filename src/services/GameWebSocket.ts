@@ -35,6 +35,7 @@ export default class GameWebSocket {
     onGameStart,
     onPlay,
     onIllegalPlay,
+    onGameOver,
   }: {
     onInit: (ws: GameWebSocket) => void;
     onGameStart: (cellValue: CellValue) => void;
@@ -48,6 +49,7 @@ export default class GameWebSocket {
       cellValue: CellValue;
     }) => void;
     onIllegalPlay: ({ row, column }: { row: number; column: number }) => void;
+    onGameOver: (winner: CellValue) => void;
   }) {
     this.ws = new WebSocket("ws://localhost:3000");
     this.onGameStart = onGameStart;
@@ -58,6 +60,7 @@ export default class GameWebSocket {
     this.gameEvents = [
       new GameEvent("play", onPlay),
       new GameEvent("illegalPlay", onIllegalPlay),
+      new GameEvent("gameOver", onGameOver),
     ];
   }
 

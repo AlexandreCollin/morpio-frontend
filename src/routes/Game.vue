@@ -33,6 +33,12 @@
             grid.value[data.row][data.column] = data.cellValue;
             hasToPlay.value = true;
         },
+        onGameOver(winner) {
+            if (winner == CellValue.Empty) alert("Draw !");
+            else {
+                alert(winner == cellValue.value ? "You won !" : "You lost !");
+            }
+        }
     });
 
 
