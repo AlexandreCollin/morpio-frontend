@@ -25,9 +25,7 @@ class GameEvent {
 
 export default class GameWebSocket {
   private readonly ws: WebSocket;
-
   private readonly onGameStart: (cellValue: CellValue) => void;
-
   private readonly gameEvents: GameEvent[];
 
   constructor({

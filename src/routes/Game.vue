@@ -2,6 +2,7 @@
     import TitleComponent from "../components/TitleComponent.vue";
     import GridComponent from "../components/GridComponent.vue";
     import GameWebSocket, { CellValue } from "../services/GameWebSocket";
+    import CopyToClipboardButtonComponent from "../components/CopyToClipboardButtonComponent.vue";
 
     import { ref, type Ref } from "vue";
 
@@ -48,7 +49,11 @@
     
     const copyToClipboard = () => {
         navigator.clipboard.writeText(window.location.href);
+        isCopied.value = true;
+        setTimeout(() => isCopied.value = false, 5000);
     }
+
+    let isCopied: Ref<boolean> = ref(false);
 
     const toggleCase = (rowIndex: number, cellIndex: number) => {
         console.log(hasToPlay.value)
@@ -69,5 +74,6 @@
     <TitleComponent />
     <p v-if="!gameStarted">Waiting for opponent...</p>
     <GridComponent :grid="grid" :cellValue=cellValue :enable=gameStarted :onCaseToggle="toggleCase"/>
-    <button @click="copyToClipboard" v-if="!gameStarted && gameId">Copy game link to clipboard</button>
+    <div style="height: 100px;"/>
+    <CopyToClipboardButtonComponent @click="copyToClipboard" v-if="!gameStarted && gameId">{{ isCopied ? "Copied !" : "Copy game link" }}</CopyToClipboardButtonComponent>
 </template>
