@@ -49,7 +49,7 @@ export default class GameWebSocket {
     onIllegalPlay: ({ row, column }: { row: number; column: number }) => void;
     onGameOver: (winner: CellValue) => void;
   }) {
-    this.ws = new WebSocket("ws://localhost:3000");
+    this.ws = new WebSocket(import.meta.env.VITE_WEB_SOCKET_URL!);
     this.onGameStart = onGameStart;
 
     this.ws.onopen = () => onInit(this);

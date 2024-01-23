@@ -11,12 +11,10 @@
     "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
-    "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
-    "@types/node": "^18.19.8",
     "@types/ws": "^8.5.10",
     "@vitejs/plugin-vue": "^4.5.2",
     "@vue/tsconfig": "^0.5.0",
